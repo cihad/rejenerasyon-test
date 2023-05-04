@@ -1,0 +1,23 @@
+---
+export interface Props {
+	imageSource: string;
+	title: string;
+	category: string;
+	url: string;
+}
+
+const { imageSource, title, category, url } = Astro.props;
+
+const imgSrc = `url(${imageSource})`
+---
+
+<div class="col">
+	<div class="card h-100 position-relative">
+		<img src={imageSource} alt="" class="card-img-top object-fit-cover" />
+		<div class="card-body">
+			<h5 class="card-title">{title}</h5>
+			<div class="card-text">{category}</div>
+			<a href={url} class="stretched-link link-underline link-underline-opacity-0">&nbsp;</a>
+		</div>
+	</div>
+</div>

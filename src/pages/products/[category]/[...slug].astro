@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro'
+import settings from "../../../data/settings.json"
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+
+export async function getStaticPaths() {
+  const productsEntries = await getCollection('product');
+
+  return [
+    ...productsEntries.map(entry => {
+      const [category, slug] = entry.slug.split("/")
+
+      return {
+        params: { category, slug }, props: { entry },
+      }
+    }),
+  ];
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const categorySlug = entry.slug.split("/")[0]
+const categoryName = settings.categories[categorySlug]
+const paths = [
+  { href: "/", title: "Anasayfa" },
+  { href: "/products", title: "Ürünler" },
+  { href: `/products/${categorySlug}`, title: categoryName },
+  { title: entry.data.title },
+]
+---
+
+<Layout title={"merhaba"}>
+  <Breadcrumb paths={paths} />
+  <div class="container">
+    <h1>{entry.data.title}</h1>
+    <Content />
+  </div>
+</Layout>

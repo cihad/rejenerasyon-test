@@ -1,0 +1,16 @@
+---
+import Card from "../components/Card.astro"
+const { title, products } = Astro.props
+---
+
+
+<h2 class="pb-3 border-bottom h5">{title} <span class="badge text-bg-light">{products.length} ürün</span></h2>
+<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 pt-4 pb-5">
+  {
+    products.length === 0 ?
+      <p class="lead">Hiç ürün yok</p> :
+      products.map((product) => (
+        <Card imageSource={product.data.image.src} title={product.data.title} category={product.data.category} url={`/products/${product.slug}`} />
+      ))
+  }
+</div>

@@ -1,0 +1,29 @@
+---
+import settings from "../data/settings.json"
+
+const { category } = Astro.params
+---
+
+<h2 class="pb-3 border-bottom h5">Kategoriler</h2>
+<div class="d-grid">
+  <a href="/products" class:list={["btn text-start", { 'btn-primary': !category } ]}>
+    Tüm ürünler
+  </a>
+
+  {Object.entries(settings.categories).map(([slug,name]) => {
+
+    return (
+      <a href={`/products/${slug}`} class:list={["btn text-start", { "btn-primary": slug === category }]}>
+        {name}
+      </a>
+    )
+  })}
+</div>
+
+<style>
+  .category-list-item {
+    padding: 0.1875rem 0;
+    margin-top: 0.125rem;
+    text-decoration: none;
+  }
+</style>

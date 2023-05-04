@@ -1,0 +1,45 @@
+---
+import settings from '../data/settings.json'
+import logo from '../assets/logo.svg'
+import Instagram from './Instagram.astro'
+---
+
+<nav class="navbar navbar-expand-lg border-bottom" aria-label="Eleventh navbar example">
+  <div class="container py-2">
+    <a href="/" class="navbar-brand">
+      <img src={logo.src} alt="" height="20">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Anasayfa</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Ürünlerimiz
+          </a>
+          <ul class="dropdown-menu">
+            {
+              Object.keys(settings.categories).map(cat => (
+                <li><a class="dropdown-item" href={`/products/${cat}`}>{settings.categories[cat]}</a></li>
+              ))
+            }
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/products">Tüm ürünler</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pages/iletisim">İletişim</a>
+        </li>
+      </ul>
+
+      <div class="justify-content-end d-flex">
+        <Instagram />
+      </div>
+    </div>
+  </div>
+</nav>

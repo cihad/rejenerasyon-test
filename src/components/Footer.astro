@@ -1,0 +1,55 @@
+---
+import largeLogo from "../assets/logo-2.svg"
+import Instagram from './Instagram.astro'
+import settings from '../data/settings.json'
+---
+
+<footer class="py-5 border-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-2 mb-3 d-none d-md-block">
+        <img src={largeLogo.src} alt="Rejenerasyon Biyoteknoloji" />
+      </div>
+
+      <div class="col-12 col-md-3 mb-3 offset-md-1">
+        <h5>Ürün Gruplarımız</h5>
+        <ul class="nav flex-column">
+          {
+            Object.entries(settings.categories).map(([cat, name]) => (
+              <li class="nav-item mb-2"><a href={`/products/${cat}`} class="nav-link p-0 text-body-secondary">{name}</a></li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="col-12 col-md-3 mb-3">
+        <h5>Hızlı erişim</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-body-secondary">Anasayfa</a></li>
+          <li class="nav-item mb-2"><a href="/pages/hakkimizda" class="nav-link p-0 text-body-secondary">Hakkımızda</a></li>
+          <li class="nav-item mb-2"><a href="/pages/iletisim" class="nav-link p-0 text-body-secondary">İletişim</a></li>
+          <li class="nav-item mb-2"><a href="/pages/banka-bilgileri" class="nav-link p-0 text-body-secondary">Banka bilgileri</a></li>
+          <li class="nav-item mb-2"><a href="/pages/sertifikalarimiz" class="nav-link p-0 text-body-secondary">Sertifikalarımız</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-md-3 mb-3">
+        <h5>Müşteri hizmetleri</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="/pages/destek" class="nav-link p-0 text-body-secondary">Destek</a></li>
+          <li class="nav-item mb-2"><a href="/pages/uyelik-sozlesmesi" class="nav-link p-0 text-body-secondary">Üyelik Sözleşmesi</a></li>
+          <li class="nav-item mb-2"><a href="/pages/satis-sozlesmesi" class="nav-link p-0 text-body-secondary">Satış sözleşmesi</a></li>
+          <li class="nav-item mb-2"><a href="/pages/teslimat-kosullari" class="nav-link p-0 text-body-secondary">Teslimat koşulları</a></li>
+          <li class="nav-item mb-2"><a href="/pages/garanti-iade-kosullari" class="nav-link p-0 text-body-secondary">Garanti ve iade koşulları</a></li>
+        </ul>
+      </div>
+
+      
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p>© 2023 Rejenerasyon Biyoteknoloji. Tüm hakları saklıdır.</p>
+      <Instagram />
+    </div>
+  </div>
+</footer>
