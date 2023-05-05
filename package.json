@@ -3,7 +3,8 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev:container": "node start-script.js && astro dev --config astro-container.config.mjs",
+    "dev": "node start-script.js remove && astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

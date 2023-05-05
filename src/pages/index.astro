@@ -1,18 +1,31 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import propolisShowcase from '../assets/propolis-showcase.jpg'
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import propolisShowcase from "../assets/propolis-showcase.jpg";
 
-import { getCollection, getEntryBySlug } from 'astro:content';
-import { Image } from "astro:assets"
-const featuredProducts = await getCollection('product', ({ data }) => data.isFeatured)
+import { getCollection, getEntryBySlug } from "astro:content";
+import { Image } from "astro:assets";
+const featuredProducts = await getCollection(
+	"product",
+	({ data }) => data.isFeatured
+);
 ---
 
 <Layout title="Welcome to Rejenerasyon.">
 	<main>
-		<div id="myCarousel" class="carousel slide pointer-event" data-bs-ride="carousel">
+		<div
+			id="myCarousel"
+			class="carousel slide pointer-event"
+			data-bs-ride="carousel"
+		>
 			<div class="carousel-indicators">
-				<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+				<button
+					type="button"
+					data-bs-target="#myCarousel"
+					data-bs-slide-to="0"
+					class="active"
+					aria-label="Slide 1"
+					aria-current="true"></button>
 			</div>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
@@ -20,16 +33,29 @@ const featuredProducts = await getCollection('product', ({ data }) => data.isFea
 					<div class="container">
 						<div class="carousel-caption text-start">
 							<h5>Elsiz arı ile gelen şifa</h5>
-							<p>Some representative placeholder content for the first slide of the carousel.</p>
+							<p>
+								Some representative placeholder content for the first slide of
+								the carousel.
+							</p>
 						</div>
 					</div>
 				</div>
 			</div>
-			<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+			<button
+				class="carousel-control-prev"
+				type="button"
+				data-bs-target="#myCarousel"
+				data-bs-slide="prev"
+			>
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Previous</span>
 			</button>
-			<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+			<button
+				class="carousel-control-next"
+				type="button"
+				data-bs-target="#myCarousel"
+				data-bs-slide="next"
+			>
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Next</span>
 			</button>
@@ -39,15 +65,17 @@ const featuredProducts = await getCollection('product', ({ data }) => data.isFea
 		<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 pt-4 pb-5">
 			{
 				featuredProducts.map((product) => (
-					<Card imageSource={product.data.image.src} title={product.data.title} category={product.data.category} url={`/products/${product.slug}`} />
+					<Card
+						imageSource={product.data.image.src}
+						title={product.data.title}
+						category={product.data.category}
+						url={`/products/${product.slug}`}
+					/>
 					// <pre>{JSON.stringify(product, null, 2)}</pre>
 				))
 			}
 		</div>
-
-
 	</main>
 </Layout>
 
-<style>
-</style>
+<style></style>
